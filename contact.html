@@ -1,0 +1,178 @@
+﻿<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta content="width=device-width, minimum-scale=1,initial-scale=1, maximum-scale=1, user-scalable=1;" id="viewport" name="viewport" />
+    <meta name="viewport" content="width=device-width,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta content="yes" name="apple-mobile-web-app-capable" />
+    <meta content="black" name="apple-mobile-web-app-status-bar-style" />
+    <meta content="telephone=no" name="format-detection" />
+    <meta http-equiv="Page-Enter" Content="revealTrans(duration=5, transition=2)">
+    <meta http-equiv="Page-Exit" Content="revealTrans(duration=5, transition=2)">
+    <title>新款精品</title>
+    <meta name="keywords" content="新款精品 ">
+    <meta name="description" content="新款精品">
+    <script type="text/javascript">
+        var ua = navigator.userAgent.toLowerCase();
+        var isWeixin = ua.indexOf('micromessenger') != -1;
+        var isAndroid = ua.indexOf('android') != -1;
+        var isIos = (ua.indexOf('iphone') != -1) || (ua.indexOf('ipad') != -1);
+        if (!isWeixin) {
+            //location.href = "https://open.weixin.qq.com/connect/oauth2/authorize?appid=888";
+
+
+        }
+    </script>
+
+    <!--随机抽取二维码-->
+    <script>
+        window.onload = choosePic;
+        function choosePic() {
+            var myPix = new Array("img/qrcode1.jpg", "img/qrcode2.jpg", "img/qrcode3.jpg");
+            var randomNum = Math.floor((Math.random() * myPix.length));
+            document.getElementById("myPicture").src = myPix[randomNum];
+        }
+    </script>
+    <!-- Matomo -->
+    <script>
+        var _paq = window._paq = window._paq || [];
+        /* tracker methods like "setCustomDimension" should be called before "trackPageView" */
+        _paq.push(['trackPageView']);
+        _paq.push(['enableLinkTracking']);
+        (function () {
+            var u = "//tongji.gzytsoft.com/";
+            _paq.push(['setTrackerUrl', u + 'matomo.php']);
+            _paq.push(['setSiteId', '1']);
+            var d = document, g = d.createElement('script'), s = d.getElementsByTagName('script')[0];
+            g.async = true; g.src = u + 'matomo.js'; s.parentNode.insertBefore(g, s);
+        })();
+    </script>
+    <!-- End Matomo Code -->
+    <style>
+        body {
+            padding: 0px 0px 0px 0px;
+            margin: 0px 0px 0px 0px;
+        }
+
+            body img {
+                width: 100%;
+                border: none;
+            }
+    </style>
+
+</head>
+
+
+
+<!--<body background="img/ct.jpg" style=" background-repeat:no-repeat ;background-size:100%  auto;background-attachment:local;">-->
+<body>
+    <img src="img/ctop.jpg" />
+    <img id="myPicture" onclick="" src="img/qrcode1.jpg" />
+    <img src="img/cfoot.jpg" />
+    <script>
+        !function (g, d, t, e, v, n, s) { if (g.gdt) return; v = g.gdt = function () { v.tk ? v.tk.apply(v, arguments) : v.queue.push(arguments) }; v.sv = '1.0'; v.bt = 0; v.queue = []; n = d.createElement(t); n.async = !0; n.src = e; s = d.getElementsByTagName(t)[0]; s.parentNode.insertBefore(n, s); }(window, document, 'script', '//qzonestyle.gtimg.cn/qzone/biz/gdt/dmp/user-action/gdtevent.min.js');
+        gdt('init', '1200409637');
+        gdt('track', 'SCANCODE');
+    </script>
+    <noscript>
+        <img height="1" width="1" style="display:none" src="https://a.gdt.qq.com/pixel?user_action_set_id=1200409637&action_type=SCANCODE&noscript=1" />
+    </noscript>
+    <!-- Matomo Image Tracker-->
+    <img referrerpolicy="no-referrer-when-downgrade" src="https://tongji.gzytsoft.com/matomo.php?idsite=1&amp;rec=1" style="border:0" alt="" />
+    <!-- End Matomo -->
+    <script>
+        //去重cookie记录
+        function setCookie(name, value) {
+            var Days = 360;
+            var exp = new Date();
+            exp.setTime(exp.getTime() + Days * 24 * 60 * 60 * 1000);
+            document.cookie = name + "=" + escape(value) + ";expires=" + exp.toGMTString();
+        }
+
+        function getCookie(name) {
+            var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
+            if (arr = document.cookie.match(reg))
+                return unescape(arr[2]);
+            else
+                return null;
+        }
+
+
+
+        const box = document.getElementById("myPicture");
+
+        function a() {
+            if (getCookie("qrc") == "1") {
+                console.log("取消提交动作");
+            }
+            else {
+                //去掉重复的操作
+                setCookie("qrc", "1");
+
+                gdt('track', 'SCANCODE', { 'qrcode': document.getElementById('myPicture').src, 'key2': 'value2' });
+                gdt('track', 'SCANCODE', { 'action_type': 'SCANCODE_WX', 'key2': 'value2' });
+
+                _paq.push(['trackGoal', 1]);
+
+
+                console.log("提交了数据");
+
+            }
+
+            //gdt('track', 'SCANCODE', { 'qrcode': document.getElementById('myPicture').src, 'key2': 'value2' });
+            //    gdt('track', 'SCANCODE', { 'action_type': 'SCANCODE_WX', 'key2': 'value2' });
+
+            //    console.log("提交了数据");
+        }
+        function addLongtabListener(target, callback) {
+            let timer = 0;   // 初始化timer
+            target.ontouchstart = () => {
+                timer = 0;   // 重置timer
+                timer = setTimeout(() => { callback(); timer = 0 }, 580);  // 超时器能成功执行，说明是长按
+            }
+            target.ontouchmove = () => {
+                clearTimeout(timer);    // 如果来到这里，说明是滑动
+                timer = 0;
+            }
+            target.ontouchend = () => {   // 到这里如果timer有值，说明此触摸时间不足580ms，是点击
+                if (timer) { clearTimeout(timer) }
+            }
+        }
+        addLongtabListener(box, a);
+
+        gdt('track', 'VIEW_CONTENT', { 'message': '扫码页面正在被浏览', 'key2': 'value2' });
+
+                //gdt('track', 'SEARCH', { 'key1': 'value1', 'key2': 'value2'});
+                //gdt('track', 'VIEW_CONTENT', { 'key1': 'value1', 'key2': 'value2'});
+                //gdt('track', 'REGISTER', { 'key1': 'value1', 'key2': 'value2'});
+                //gdt('track', 'ADD_TO_WISHLIST', { 'key1': 'value1', 'key2': 'value2' });
+                //gdt('track', 'CONSULT', { 'key1': 'value1', 'key2': 'value2' });
+                //gdt('track', 'ADD_TO_CART', { 'key1': 'value1', 'key2': 'value2' });
+                //gdt('track', 'INITIATE_CHECKOUT', { 'key1': 'value1', 'key2': 'value2' });
+                //gdt('track', 'COMPLETE_ORDER', { 'key1': 'value1', 'key2': 'value2' });
+                //gdt('track', 'PURCHASE', { 'key1': 'value1', 'key2': 'value2' });
+                //gdt('track', 'RESERVATION', { 'key1': 'value1', 'key2': 'value2' });
+                //gdt('track', 'SHARE', { 'key1': 'value1', 'key2': 'value2' });
+                //gdt('track', 'APPLY', { 'key1': 'value1', 'key2': 'value2' });
+                //gdt('track', 'CLAIM_OFFER', { 'key1': 'value1', 'key2': 'value2' });
+                //gdt('track', 'NAVIGATE', { 'key1': 'value1', 'key2': 'value2' });
+                //gdt('track', 'PRODUCT_RECOMMEND', { 'key1': 'value1', 'key2': 'value2' });
+                //gdt('track', 'VISIT_STORE', { 'key1': 'value1', 'key2': 'value2' });
+                //gdt('track', 'TRY_OUT', { 'key1': 'value1', 'key2': 'value2' });
+                //gdt('track', 'DELIVER', { 'key1': 'value1', 'key2': 'value2' });
+                //gdt('track', 'SIGN_IN', { 'key1': 'value1', 'key2': 'value2' });
+                //gdt('track', 'CONFIRM_EFFECTIVE_LEADS', { 'key1': 'value1', 'key2': 'value2' });
+                //gdt('track', 'CONFIRM_POTENTIAL_CUSTOMER', { 'key1': 'value1', 'key2': 'value2' });
+                //gdt('track', 'CREATE_ROLE', { 'key1': 'value1', 'key2': 'value2' });
+                //gdt('track', 'AUTHORIZE', { 'key1': 'value1', 'key2': 'value2' });
+                //gdt('track', 'TUTORIAL_FINISH', { 'key1': 'value1', 'key2': 'value2' });
+                //gdt('track', 'SCANCODE', { 'key1': 'value1', 'key2': 'value2' });
+                //gdt('track', 'PRE_CREDIT', { 'key1': 'value1', 'key2': 'value2' });
+                //gdt('track', 'CREDIT', { 'key1': 'value1', 'key2': 'value2' });
+                //gdt('track', 'WITHDRAW_DEPOSITS', { 'key1': 'value1', 'key2': 'value2' });
+
+    </script>
+</body>
+</html>
+
